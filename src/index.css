@@ -113,8 +113,9 @@ h1 {
 }
 
 /* Location css */
-.location-date {
+.location-date-container {
   display: flex;
+  justify-content: space-between;
   gap: 30px;
   padding: 15px;
   background-color: var(--white-color);
@@ -124,38 +125,38 @@ h1 {
   margin-top: 25px;
 }
 
-.location-date .location {
+.location-date-container .location {
   display: flex;
   flex-direction: column;
   gap: 7px;
 }
 
-.location-date .main-text {
+.location-date-container .info-header {
   display: flex;
   align-items: center;
   gap: 7px;
 }
 
-.location-date .icon{
+.location-date-container .icon {
   color: var(--primary-deep-color);
 }
 
-.location-date .date {
+.location-date-container .date {
   display: flex;
   flex-direction: column;
   gap: 7px;
 }
-.location-date .hijri {
+.location-date-container .hijri {
   display: flex;
   flex-direction: column;
   gap: 7px;
 }
-.location-date span {
+.location-date-container span {
   color: var(--accent-gold-color);
   font-weight: 600;
 }
 
-.location-date p {
+.location-date-container .info-value {
   color: var(--primary-blue-color);
   font-weight: 700;
 }
@@ -185,10 +186,10 @@ h1 {
   font-size: 13px;
 }
 
-.next-prayer .timer{
-display: flex;
-align-items: center;
-gap: 5px;
+.next-prayer .timer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .next-prayer .prayer {

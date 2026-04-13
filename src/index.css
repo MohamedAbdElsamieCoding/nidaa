@@ -1,8 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
-
-/*  font-family: "Noto Sans", sans-serif;
-    font-family: "Mulish", sans-serif;
- */
+@import url("https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 * {
   margin: 0;
@@ -28,7 +25,6 @@ body {
   background-position: center;
   background-size: cover;
   min-height: 100dvh;
-  overflow: hidden;
   font-family: "Mulish", sans-serif;
   font-weight: 400;
 }
@@ -68,12 +64,15 @@ h1 {
   justify-content: center;
   align-items: center;
 }
+.arab-lang {
+  font-family: "Amiri", serif;
+  direction: rtl;
+}
 /* Header css */
 .data {
   margin-top: 50px;
   background-color: rgba(245, 243, 240, 0.6);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border-radius: 30px;
   padding: 25px;
 }
@@ -92,14 +91,14 @@ h1 {
     var(--primary-deep-color),
     var(--primary-blue-color)
   );
-  padding: 25px;
+  padding: 20px 50px 20px 50px;
 }
 
 .header .tag-name {
   background-color: var(--primary-blue-color);
   width: fit-content;
   border-radius: 20px;
-  padding: 10px 20px 10px 20px;
+  padding: 5px 20px 5px 20px;
 }
 
 .header .tag-name h3 {
@@ -117,7 +116,7 @@ h1 {
 .location-date {
   display: flex;
   gap: 30px;
-  padding: 10px;
+  padding: 15px;
   background-color: var(--white-color);
   border: solid;
   border-color: var(--border-color);
@@ -130,6 +129,17 @@ h1 {
   flex-direction: column;
   gap: 7px;
 }
+
+.location-date .main-text {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.location-date .icon{
+  color: var(--primary-deep-color);
+}
+
 .location-date .date {
   display: flex;
   flex-direction: column;
@@ -142,7 +152,7 @@ h1 {
 }
 .location-date span {
   color: var(--accent-gold-color);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .location-date p {
@@ -175,42 +185,50 @@ h1 {
   font-size: 13px;
 }
 
+.next-prayer .timer{
+display: flex;
+align-items: center;
+gap: 5px;
+}
+
 .next-prayer .prayer {
   margin: 0;
   text-shadow: 2px 2px var(--primary-deep-color);
+  font-size: 45px;
 }
 .next-prayer .timer {
   color: var(--white-color);
   font-weight: 400;
   font-size: 13px;
 }
+
 .prayers-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 20px;
   padding: 20px;
 }
-.prayer-card {
-  background-color: rgba(255, 255, 255, 0.6);
 
+.prayer-card {
+  background-color: gba(255, 255, 255, 0.6);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-
-  border-radius: 20px;
-  padding: 30px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.09);
+  border: 1px solid var(--accent-gold-color);
+  border-radius: 20px;
   transition: transform 0.3s ease;
+  padding: 20px 30px;
 }
+
 .prayer-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 4px 20px var(--secondary-tan-color);
 }
+
 .prayer-title {
   color: #a38d6d;
   font-size: 0.9rem;
@@ -218,6 +236,7 @@ h1 {
   letter-spacing: 1px;
   margin-bottom: 15px;
 }
+
 .prayer-time {
   color: #1a4d6e;
   font-size: 2.5rem;
@@ -225,7 +244,7 @@ h1 {
   margin-bottom: 10px;
 }
 .prayer-period {
-  color: #b5b5b5;
+  color: #9e9d9d;
   font-size: 0.8rem;
   font-weight: 500;
 }

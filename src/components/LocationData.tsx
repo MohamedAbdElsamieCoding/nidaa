@@ -20,11 +20,13 @@ interface PrayerData {
 
 interface LocationDataProps {
   prayerData: PrayerData | null | undefined;
+  cityName: string;
 }
 
-const LocationData: React.FC<LocationDataProps> = ({ prayerData }) => {
-  const cityName =
-    prayerData?.meta.timezone.split("/")[1].replace("_", " ") || "Loading...";
+const LocationData: React.FC<LocationDataProps> = ({
+  prayerData,
+  cityName,
+}) => {
   const hijri = prayerData?.date.hijri;
   return (
     <div className="location-date-container">

@@ -3,19 +3,31 @@ import PrayersCard from "./components/PrayersGrid";
 import NextPrayer from "./components/NextPrayer";
 import Header from "./components/Header";
 import LocationData from "./components/LocationData";
+import CitySelector from "./components/CitySelector";
+import { useState } from "react";
 
 function App() {
-  const { prayers, prayerData, loading, nextPrayerIndex, remainingTime } =
-    usePrayerTimes();
+  const [city, setCity] = useState<string>("Cairo");
 
-  if (loading) return <div>Loading....</div>;
+  const { prayers, prayerData, loading, nextPrayerIndex, remainingTime } =
+    usePrayerTimes(city);
+
+  const handleCityChange = (newCity: string) => {
+    setCity(newCity);
+  };
+
+  if (loading && !prayerData) return <div>Loading....</div>;
 
   return (
     <>
       <div className="container">
         <div className="data">
           <Header />
-          <LocationData prayerData={prayerData} />
+          <div className="selector-wrapper" style={{ marginBottom: "20px" }}>
+            <CitySelector currentCity={city} onCityChange={handleCityChange} />
+            {loading && <p className="updating-text">Updating times...</p>}
+          </div>
+          <LocationData prayerData={prayerData} cityName={city} />
           <NextPrayer
             prayerName={prayers[nextPrayerIndex]?.name}
             remainingTime={remainingTime}

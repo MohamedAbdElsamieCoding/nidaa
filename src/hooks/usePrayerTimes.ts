@@ -5,7 +5,7 @@ import type {
   PrayerTimesResponse,
 } from "../types/prayers.type";
 
-export const usePrayerTimes = () => {
+export const usePrayerTimes = (city: string) => {
   const [prayers, setPrayers] = useState<PrayerDisplay[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [prayerData, setPrayerData] = useState<PrayerData | null>(null);
@@ -28,13 +28,14 @@ export const usePrayerTimes = () => {
   useEffect(() => {
     const fetchPrayerTimes = async () => {
       try {
+        setLoading(true);
         const today = new Date();
         const formattedDate = `${String(today.getDate()).padStart(2, "0")}-${String(
           today.getMonth() + 1,
         ).padStart(2, "0")}-${today.getFullYear()}`;
 
         const res = await fetch(
-          `https://api.aladhan.com/v1/timingsByCity/${formattedDate}?city=Cairo&country=EG&method=5`,
+          `https://api.aladhan.com/v1/timingsByCity/${formattedDate}?city=${city}&country=EG&method=5`,
         );
         const result: PrayerTimesResponse = await res.json();
         if (result.status === "OK") {
@@ -77,7 +78,7 @@ export const usePrayerTimes = () => {
       }
     };
     fetchPrayerTimes();
-  }, []);
+  }, [city]);
   useEffect(() => {
     if (prayers.length === 0 || !prayerData) return;
     const interval = setInterval(() => {

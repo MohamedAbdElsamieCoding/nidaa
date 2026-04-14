@@ -16,7 +16,7 @@ function App() {
     setCity(newCity);
   };
 
-  if (loading && !prayerData) return <div>Loading....</div>;
+  if (loading && !prayerData) return <div className="loading">Loading....</div>;
 
   return (
     <>
